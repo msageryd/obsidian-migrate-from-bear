@@ -1,0 +1,26 @@
+{
+  "name": "obsidian-migrate-from-bear",
+  "version": "1.0.0",
+  "description": "Migration tool for converting Bear notes to Obsidian format",
+  "main": "index.js",
+  "bin": {
+    "obsidian-migrate-from-bear": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "migrate": "node index.js",
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "obsidian",
+    "bear",
+    "markdown",
+    "migration",
+    "notes"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^11.2.0"
+  }
+}
