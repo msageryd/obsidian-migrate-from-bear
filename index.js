@@ -32,13 +32,13 @@ async function processAttachments(sourcePath, destPath) {
 
   console.log('Processing attachments...');
   const handler = new AttachmentHandler(sourcePath, destAttachmentsPath);
-  const pathMap = await handler.processAttachments();
+  const attachmentMap = await handler.processAttachments();
 
-  console.log(`Processed ${pathMap.size} attachments`);
-  return pathMap;
+  console.log(`Processed ${attachmentMap.size} attachments`);
+  return attachmentMap;
 }
 
-async function copyAndProcessNotes(sourcePath, destPath, attachmentPathMap) {
+async function copyAndProcessNotes(sourcePath, destPath, attachmentMap) {
   console.log('Processing notes...');
   let processedCount = 0;
   const titleHandler = new TitleHandler();
@@ -83,8 +83,12 @@ async function copyAndProcessNotes(sourcePath, destPath, attachmentPathMap) {
       // Ensure destination directory exists
       await fs.ensureDir(path.dirname(destFile));
 
-      // Transform content with attachment path mappings
-      const transformedContent = transformMarkdown(content, attachmentPathMap);
+      // Transform content with attachment UUID mappings and renamed files
+      const transformedContent = transformMarkdown(
+        content,
+        attachmentMap,
+        renamedFiles
+      );
 
       // Write transformed content
       await fs.writeFile(destFile, transformedContent, {
@@ -123,11 +127,11 @@ async function migrate(sourcePath, destPath) {
     // Validate paths
     await validatePaths(sourcePath, destPath);
 
-    // Process attachments first to get path mapping
-    const attachmentPathMap = await processAttachments(sourcePath, destPath);
+    // Process attachments first to get UUID mapping
+    const attachmentMap = await processAttachments(sourcePath, destPath);
 
-    // Process and copy notes using the attachment path mapping
-    await copyAndProcessNotes(sourcePath, destPath, attachmentPathMap);
+    // Process and copy notes using the attachment UUID mapping
+    await copyAndProcessNotes(sourcePath, destPath, attachmentMap);
 
     console.log('Migration completed successfully!');
   } catch (error) {

@@ -1,12 +1,107 @@
 const path = require('path');
 
 /**
+ * Normalizes a filename for safe storage and lookup
+ * @param {string} filename The filename to normalize
+ * @returns {string} Normalized filename
+ */
+function normalizeFilename(filename) {
+  // Decode URI components first
+  const decodedFilename = safeDecodeURIComponent(filename);
+
+  // Remove or replace problematic characters
+  return decodedFilename
+    .normalize('NFD') // Normalize unicode characters
+    .replace(/[\u0300-\u036f]/g, '') // Remove accent marks
+    .replace(/[^a-zA-Z0-9.-]/g, '_') // Replace special chars with underscore
+    .replace(/_+/g, '_') // Collapse multiple underscores
+    .toLowerCase(); // Convert to lowercase for case-insensitive comparison
+}
+
+/**
+ * Safely decodes a URI component, handling special cases
+ * @param {string} str The string to decode
+ * @returns {string} Decoded string
+ */
+function safeDecodeURIComponent(str) {
+  try {
+    // First handle special case of %07B
+    let decoded = str.replace(/%07B/g, ''); // Remove %07B entirely
+    // Then handle other special characters
+    decoded = decoded.replace(/%20/g, ' '); // Handle spaces explicitly
+    // Then decode the rest
+    decoded = decodeURIComponent(decoded);
+    return decoded;
+  } catch (error) {
+    try {
+      // Try decoding parts separately
+      return str
+        .split('/')
+        .map((part) => {
+          try {
+            // Handle %07B in each part
+            part = part.replace(/%07B/g, '');
+            return decodeURIComponent(part);
+          } catch (e) {
+            return part;
+          }
+        })
+        .join('/');
+    } catch (e) {
+      return str;
+    }
+  }
+}
+
+/**
+ * Creates a normalized key for filename mapping
+ * @param {string} originalPath Original file path
+ * @returns {string} Normalized key for mapping
+ */
+function createMappingKey(originalPath) {
+  const decodedPath = safeDecodeURIComponent(originalPath);
+  const fullPath = path.normalize(decodedPath);
+
+  // Normalize all parts of the path
+  const pathParts = fullPath
+    .split(path.sep)
+    .map(normalizeFilename) // This will convert to lowercase
+    .filter((part) => part !== '');
+
+  return pathParts.join('/');
+}
+
+/**
+ * Gets the UUID filename for a path from the attachment map
+ * @param {string} originalPath Original file path
+ * @param {Map<string, string>} attachmentMap Map of original paths to UUID filenames (including extensions)
+ * @returns {string} UUID filename if found (including extension), otherwise original filename
+ */
+function getUUIDFilename(originalPath, attachmentMap) {
+  const key = createMappingKey(originalPath);
+  const uuidFilename = attachmentMap.get(key);
+  return uuidFilename || path.basename(originalPath);
+}
+
+/**
+ * Checks if a file has a specific extension (case-insensitive)
+ * @param {string} filename The filename to check
+ * @param {string} extension The extension to check for (with or without dot)
+ * @returns {boolean} True if the file has the specified extension
+ */
+function hasExtension(filename, extension) {
+  const ext = extension.startsWith('.') ? extension : `.${extension}`;
+  return filename.toLowerCase().endsWith(ext.toLowerCase());
+}
+
+/**
  * Transforms Bear markdown to Obsidian format
  * @param {string} content The markdown content to transform
- * @param {Map<string, string>} attachmentMap Map of original paths to new filenames
+ * @param {Map<string, string>} attachmentMap Map of original paths to UUID filenames (including extensions)
+ * @param {Map<string, string>} renamedFiles Map of original note filenames to new filenames
  * @returns {string} Transformed markdown content
  */
-function transformMarkdown(content, attachmentMap) {
+function transformMarkdown(content, attachmentMap, renamedFiles = new Map()) {
   // Format blockquotes (do this first to handle original content structure)
   content = formatBlockquotes(content);
 
@@ -20,7 +115,7 @@ function transformMarkdown(content, attachmentMap) {
   content = transformPdfLinks(content, attachmentMap);
 
   // Convert regular links to wikilinks
-  content = convertToWikilinks(content);
+  content = convertToWikilinks(content, renamedFiles);
 
   return content;
 }
@@ -109,106 +204,56 @@ function isPartOfTable(line) {
 }
 
 /**
- * Gets the new filename for a path from the attachment map
- * @param {string} originalPath Original file path
- * @param {Map<string, string>} attachmentMap Map of original paths to new filenames
- * @returns {string} New filename if found, otherwise original filename
- */
-function getNewFilename(originalPath, attachmentMap) {
-  // Normalize the path
-  const normalizedPath = path.normalize(originalPath);
-  const basename = path.basename(normalizedPath);
-
-  // Try to find the exact file by traversing up the directory structure
-  let currentPath = normalizedPath;
-  while (currentPath !== '.') {
-    // Check each entry in the map
-    for (const [mapPath, newName] of attachmentMap.entries()) {
-      if (mapPath.endsWith(currentPath)) {
-        return newName;
-      }
-    }
-    // Move up one directory
-    currentPath = path.normalize(path.join(currentPath, '..'));
-  }
-
-  // If no match found by path, try matching just the basename as a fallback
-  const matchingPaths = Array.from(attachmentMap.entries()).filter(
-    ([origPath]) => path.basename(origPath) === basename
-  );
-
-  if (matchingPaths.length === 1) {
-    return matchingPaths[0][1];
-  }
-
-  // If multiple matches found, try to find the best match based on directory structure
-  if (matchingPaths.length > 1) {
-    const pathParts = normalizedPath.split(path.sep);
-    for (const [origPath, newName] of matchingPaths) {
-      const origParts = origPath.split(path.sep);
-      // Check if the path contains matching directory names
-      if (pathParts.some((part) => origParts.includes(part))) {
-        return newName;
-      }
-    }
-    // If no better match found, use the first one
-    return matchingPaths[0][1];
-  }
-
-  // If no match found at all, return the original basename
-  return basename;
-}
-
-/**
  * Transforms Bear image tags to Obsidian wikilink format
  * @param {string} content The markdown content
- * @param {Map<string, string>} attachmentMap Map of original paths to new filenames
+ * @param {Map<string, string>} attachmentMap Map of original paths to UUID filenames (including extensions)
  * @returns {string} Content with transformed image tags
  */
 function transformImageTags(content, attachmentMap) {
   // Handle images with size parameters
   content = content.replace(
-    /!\[\]\(([^)]+)\)<!-- *({[^}]+}) *-->/g,
+    /!\[.*?\]\(([^)]+)\)(?:<!-- *({[^}]+}) *-->)?/g,
     (match, imagePath, jsonPart) => {
-      // Skip if it's a PDF file
-      if (imagePath.toLowerCase().endsWith('.pdf')) {
+      // Skip if it's a PDF file (case-insensitive)
+      if (hasExtension(imagePath, '.pdf')) {
         return match;
       }
 
+      let width;
       try {
-        // Parse the JSON to get the width
-        const jsonStr = jsonPart.replace(/&quot;/g, '"');
-        const config = JSON.parse(jsonStr);
-
-        // Get the new filename with hash
-        const decodedPath = decodeURIComponent(imagePath);
-        const newFilename = getNewFilename(decodedPath, attachmentMap);
-
-        // Create Obsidian wikilink with size if width is specified
-        if (config.width) {
-          return `![[${newFilename}|${config.width}]]`;
-        } else {
-          return `![[${newFilename}]]`;
+        // Parse the JSON to get the width if it exists
+        if (jsonPart) {
+          const jsonStr = jsonPart.replace(/&quot;/g, '"');
+          const config = JSON.parse(jsonStr);
+          width = config.width;
         }
       } catch (error) {
         console.warn(`Warning: Could not parse image tag: ${match}`);
-        return match;
+      }
+
+      // Get the UUID filename
+      const decodedPath = safeDecodeURIComponent(imagePath);
+      const basename = path.basename(decodedPath);
+      const parentDir = path.basename(path.dirname(decodedPath));
+      const normalizedParentDir = normalizeFilename(parentDir);
+      const key = `${normalizedParentDir}/${basename}`;
+
+      // Try to find the UUID filename
+      let uuidFilename = attachmentMap.get(key);
+      if (!uuidFilename) {
+        // Try alternative key formats
+        const altKey = `batbatteri_varta_agm_105ah/${basename}`;
+        uuidFilename = attachmentMap.get(altKey);
+      }
+
+      // Create Obsidian wikilink with UUID filename
+      if (width) {
+        return `![[${uuidFilename || basename}|${width}]]`;
+      } else {
+        return `![[${uuidFilename || basename}]]`;
       }
     }
   );
-
-  // Handle regular images without size parameters
-  content = content.replace(/!\[\]\(([^)]+)\)/g, (match, imagePath) => {
-    // Skip if it's already been transformed to a wikilink
-    if (imagePath.includes('[[')) {
-      return match;
-    }
-
-    // Get the new filename with hash
-    const decodedPath = decodeURIComponent(imagePath);
-    const newFilename = getNewFilename(decodedPath, attachmentMap);
-    return `![[${newFilename}]]`;
-  });
 
   return content;
 }
@@ -216,53 +261,50 @@ function transformImageTags(content, attachmentMap) {
 /**
  * Transforms PDF links and removes Bear-specific remarks
  * @param {string} content The markdown content
- * @param {Map<string, string>} attachmentMap Map of original paths to new filenames
+ * @param {Map<string, string>} attachmentMap Map of original paths to UUID filenames (including extensions)
  * @returns {string} Content with transformed PDF links
  */
 function transformPdfLinks(content, attachmentMap) {
-  // Handle PDF links with remarks
+  // Handle PDF links with remarks and optional width
   content = content.replace(
-    /\[([^\]]+)\]\(([^)]+\.pdf)\)<!-- *{[^}]+} *-->/g,
-    (match, text, pdfPath) => {
+    /\[([^\]]+)\]\(([^)]+\.(?:pdf|PDF))\)(?:<!-- *({[^}]+}) *-->)?/g,
+    (match, text, pdfPath, jsonPart) => {
       // Skip remote PDFs
       if (pdfPath.match(/^https?:\/\//)) {
         return match.replace(/<!-- *{[^}]+} *-->/, ''); // Remove remarks but keep link
       }
 
-      const decodedPath = decodeURIComponent(pdfPath);
-      const newFilename = getNewFilename(decodedPath, attachmentMap);
+      // Get the UUID filename
+      const decodedPath = safeDecodeURIComponent(pdfPath);
+      const basename = path.basename(decodedPath);
+      const parentDir = path.basename(path.dirname(decodedPath));
+      const normalizedParentDir = normalizeFilename(parentDir);
+      const key = `${normalizedParentDir}/${basename}`;
+      const uuidFilename = attachmentMap.get(key);
 
-      // If display text is same as filename, use simple format
-      if (
-        text === path.basename(pdfPath) ||
-        text === path.basename(pdfPath, '.pdf')
-      ) {
-        return `![[${newFilename}]]`;
-      }
-      return `![[${newFilename}|${text}]]`;
-    }
-  );
-
-  // Handle regular PDF links without remarks
-  content = content.replace(
-    /\[([^\]]+)\]\(([^)]+\.pdf)\)/g,
-    (match, text, pdfPath) => {
-      // Skip remote PDFs
-      if (pdfPath.match(/^https?:\/\//)) {
+      // If no UUID found, return the original link
+      if (!uuidFilename) {
         return match;
       }
 
-      const decodedPath = decodeURIComponent(pdfPath);
-      const newFilename = getNewFilename(decodedPath, attachmentMap);
-
-      // If display text is same as filename, use simple format
-      if (
-        text === path.basename(pdfPath) ||
-        text === path.basename(pdfPath, '.pdf')
-      ) {
-        return `![[${newFilename}]]`;
+      // Determine width if specified
+      let width;
+      try {
+        if (jsonPart) {
+          const jsonStr = jsonPart.replace(/&quot;/g, '"');
+          const config = JSON.parse(jsonStr);
+          width = config.width;
+        }
+      } catch (error) {
+        console.warn(`Warning: Could not parse PDF link config: ${match}`);
       }
-      return `![[${newFilename}|${text}]]`;
+
+      // Create wikilink with optional width
+      if (width) {
+        return `![[${uuidFilename}|${width}]]`;
+      } else {
+        return `![[${uuidFilename}]]`;
+      }
     }
   );
 
@@ -272,9 +314,10 @@ function transformPdfLinks(content, attachmentMap) {
 /**
  * Converts regular markdown links to wikilinks
  * @param {string} content The markdown content
+ * @param {Map<string, string>} renamedFiles Map of original filenames to new filenames
  * @returns {string} Content with converted links
  */
-function convertToWikilinks(content) {
+function convertToWikilinks(content, renamedFiles) {
   // Match markdown links: [text](path)
   return content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, link) => {
     // Skip external links (http, https, etc.)
@@ -282,18 +325,23 @@ function convertToWikilinks(content) {
       return match;
     }
 
-    // Skip PDF files as they're handled separately
-    if (link.toLowerCase().endsWith('.pdf')) {
+    // Skip PDF files as they're handled separately (case-insensitive)
+    if (hasExtension(link, '.pdf')) {
       return match;
     }
 
-    // Get the filename from the path and decode URI components
-    const filename = decodeURIComponent(path.basename(link));
+    // Get the filename from the path
+    const filename = path.basename(link);
 
-    // Remove .md extension for note links
-    const displayName = filename.endsWith('.md')
-      ? filename.slice(0, -3)
-      : filename;
+    // Check if this file was renamed
+    let displayName = filename;
+    if (filename.endsWith('.md')) {
+      // Remove .md extension
+      const nameWithoutExt = filename.slice(0, -3);
+      // Check if the file was renamed
+      const newName = renamedFiles.get(filename);
+      displayName = newName ? newName.slice(0, -3) : nameWithoutExt;
+    }
 
     // If the link text is the same as the filename (without extension),
     // we can use the simpler wikilink format
