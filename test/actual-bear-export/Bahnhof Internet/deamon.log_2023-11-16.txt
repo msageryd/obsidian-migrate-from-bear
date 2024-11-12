@@ -1,0 +1,206 @@
+2023-11-12T00:00:00+01:00 CloudKey systemd[1]: Reloading System Logger Daemon.
+2023-11-12T00:00:00+01:00 CloudKey systemd[1]: Reloaded System Logger Daemon.
+2023-11-12T00:00:00+01:00 CloudKey systemd[1]: logrotate.service: Succeeded.
+2023-11-12T00:00:00+01:00 CloudKey systemd[1]: Finished Rotate log files.
+2023-11-12T00:07:00+01:00 CloudKey systemd[1]: Starting Generate a daily summary of process accounting...
+2023-11-12T00:07:00+01:00 CloudKey systemd[1]: sysstat-summary.service: Succeeded.
+2023-11-12T00:07:00+01:00 CloudKey systemd[1]: Finished Generate a daily summary of process accounting.
+2023-11-12T00:10:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T00:10:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T00:10:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T00:20:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T00:20:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T00:20:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T00:30:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T00:30:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T00:30:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T00:40:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T00:40:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T00:40:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T00:50:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T00:50:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T00:50:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T01:00:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T01:00:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T01:00:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T01:10:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T01:10:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T01:10:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T01:20:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T01:20:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T01:20:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T01:30:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T01:30:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T01:30:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T01:40:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T01:40:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T01:40:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T01:50:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T01:50:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T01:50:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T02:00:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T02:00:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T02:00:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T02:10:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T02:10:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T02:10:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T02:20:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T02:20:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T02:20:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T02:30:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T02:30:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T02:30:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T02:40:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T02:40:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T02:40:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T02:50:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T02:50:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T02:50:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T03:00:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T03:00:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T03:00:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T03:10:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T03:10:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T03:10:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T03:10:50+01:00 CloudKey systemd[1]: Starting Online ext4 Metadata Check for All Filesystems...
+2023-11-12T03:10:50+01:00 CloudKey systemd[1]: e2scrub_all.service: Succeeded.
+2023-11-12T03:10:50+01:00 CloudKey systemd[1]: Finished Online ext4 Metadata Check for All Filesystems.
+2023-11-12T03:20:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T03:20:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T03:20:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T03:30:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T03:30:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T03:30:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T03:40:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T03:40:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T03:40:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T03:50:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T03:50:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T03:50:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T04:00:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T04:00:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T04:00:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T04:10:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T04:10:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T04:10:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T04:20:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T04:20:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T04:20:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T04:30:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T04:30:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T04:30:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T04:40:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T04:40:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T04:40:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T04:50:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T04:50:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T04:50:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T05:00:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T05:00:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T05:00:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T05:10:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T05:10:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T05:10:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T05:20:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T05:20:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T05:20:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T05:30:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T05:30:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T05:30:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T05:40:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T05:40:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T05:40:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T05:50:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T05:50:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T05:50:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T06:00:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-12T06:00:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-12T06:00:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-12T06:03:21+01:00 CloudKey systemd[1]: Starting Daily apt upgrade and clean activities...
+2023-11-12T06:03:22+01:00 CloudKey systemd[1]: apt-daily-upgrade.service: Succeeded.
+2023-11-16T08:42:13+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:42:19+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:42:34+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:42:39+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:42:56+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:43:28+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:43:45+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:44:08+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:44:35+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:44:39+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:44:46+01:00 CloudKey ubnt_monitor[3483093]: ping: ping.ui.com: Temporary failure in name resolution
+2023-11-16T08:44:54+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:45:10+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:45:28+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:45:39+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:45:57+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:46:31+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:46:54+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:47:05+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:47:19+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:47:29+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:47:44+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:47:54+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:48:18+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:48:34+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:49:03+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:49:20+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:49:38+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:49:44+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:49:57+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:50:00+01:00 CloudKey systemd[1]: Starting system activity accounting tool...
+2023-11-16T08:50:00+01:00 CloudKey systemd[1]: sysstat-collect.service: Succeeded.
+2023-11-16T08:50:00+01:00 CloudKey systemd[1]: Finished system activity accounting tool.
+2023-11-16T08:50:07+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:50:11+01:00 CloudKey ubnt_monitor[3483808]: ping: ping.ui.com: Temporary failure in name resolution
+2023-11-16T08:50:30+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:50:46+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:51:34+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:51:41+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:51:53+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:51:54+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:51:54+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:51:55+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:51:55+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:51:55+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:51:56+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:51:57+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:51:57+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:51:57+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:51:58+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:51:58+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:51:58+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:51:59+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:52:01+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:52:01+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:01+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:02+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:52:02+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:02+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:04+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:52:04+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:04+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:05+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:52:05+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:05+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:06+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:52:06+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:06+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:07+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:52:07+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:07+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:09+01:00 CloudKey systemd[1]: Reloading.
+2023-11-16T08:52:09+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:15: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:09+01:00 CloudKey systemd[1]: /lib/systemd/system/systemd-networkd-fallbacker@.service:16: Standard output type syslog is obsolete, automatically updating to journal. Please update your unit file, and consider removing the setting altogether.
+2023-11-16T08:52:14+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:52:17+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:52:30+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:52:33+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:52:43+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:52:46+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:52:59+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:53:13+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:53:21+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:53:28+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.
+2023-11-16T08:53:43+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set UDP instead of TCP for DNS server 208.67.222.222.
+2023-11-16T08:54:17+01:00 CloudKey systemd-resolved[1435]: Using degraded feature set TCP instead of UDP for DNS server 208.67.222.222.

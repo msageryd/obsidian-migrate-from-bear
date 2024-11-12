@@ -3,24 +3,6 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 /**
- * Normalizes a filename for safe storage and lookup
- * @param {string} filename The filename to normalize
- * @returns {string} Normalized filename
- */
-function normalizeFilename(filename) {
-  // Decode URI components first
-  const decodedFilename = safeDecodeURIComponent(filename);
-
-  // Remove or replace problematic characters
-  return decodedFilename
-    .normalize('NFD') // Normalize unicode characters
-    .replace(/[\u0300-\u036f]/g, '') // Remove accent marks
-    .replace(/[^a-zA-Z0-9.-]/g, '_') // Replace special chars with underscore
-    .replace(/_+/g, '_') // Collapse multiple underscores
-    .toLowerCase(); // Convert to lowercase for case-insensitive comparison
-}
-
-/**
  * Safely decodes a URI component, handling special cases
  * @param {string} str The string to decode
  * @returns {string} Decoded string
@@ -61,9 +43,9 @@ function safeDecodeURIComponent(str) {
 }
 
 /**
- * Creates a normalized key for filename mapping
+ * Creates a key for filename mapping, preserving case
  * @param {string} originalPath Original file path
- * @returns {string} Normalized key for mapping
+ * @returns {string} Key for mapping
  */
 function createMappingKey(originalPath) {
   console.log('Creating key for:', originalPath);
@@ -74,11 +56,8 @@ function createMappingKey(originalPath) {
   const relativePath = path.relative(this.sourceDir, fullPath);
   console.log('Relative path:', relativePath);
 
-  // Normalize all parts of the path
-  const pathParts = relativePath
-    .split(path.sep)
-    .map(normalizeFilename) // This will convert to lowercase
-    .filter((part) => part !== '');
+  // Split path and filter out empty parts, but preserve case
+  const pathParts = relativePath.split(path.sep).filter((part) => part !== '');
 
   const key = pathParts.join('/');
   console.log('Created key:', key);
@@ -101,7 +80,7 @@ class AttachmentHandler {
    * @returns {string} Unique filename
    */
   async generateUniqueFilename(originalPath) {
-    // Keep original extension case but use lowercase for comparison
+    // Keep original extension case
     const ext = path.extname(originalPath);
     const uuid = uuidv4();
     return `${uuid}${ext}`;
@@ -129,12 +108,6 @@ class AttachmentHandler {
     console.log('Using key:', key);
     console.log('With UUID:', newFilename);
     this.attachmentMap.set(key, newFilename);
-
-    // Also store with lowercase extension for case-insensitive lookup
-    const lowercaseKey = key.toLowerCase();
-    if (lowercaseKey !== key) {
-      this.attachmentMap.set(lowercaseKey, newFilename);
-    }
   }
 
   /**
@@ -196,19 +169,10 @@ class AttachmentHandler {
    */
   getUUIDFilename(originalPath) {
     console.log('Getting UUID for:', originalPath);
-    // Try exact match first
     const key = createMappingKey.call(this, originalPath);
     console.log('Looking up key:', key);
-    let uuidFilename = this.attachmentMap.get(key);
+    const uuidFilename = this.attachmentMap.get(key);
     console.log('Found UUID:', uuidFilename);
-
-    // If not found, try lowercase key
-    if (!uuidFilename) {
-      const lowercaseKey = key.toLowerCase();
-      uuidFilename = this.attachmentMap.get(lowercaseKey);
-      console.log('Found UUID (lowercase):', uuidFilename);
-    }
-
     return uuidFilename;
   }
 }

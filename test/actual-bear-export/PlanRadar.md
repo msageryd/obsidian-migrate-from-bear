@@ -1,0 +1,118 @@
+# PlanRadar
+#plantrail/competition
+
+Fabio Hirsch
+
+
+![](PlanRadar/09FB8EFF-A79B-4C08-9EA9-D3A4E3025277.png)
+
+
+![](PlanRadar/6F63B4CD-9513-4F86-800B-A1BFEAB75BED.png)
+
+
+![](PlanRadar/D01ADE4A-B924-4A32-A7C6-BEA908D0D156.png)
+
+![](PlanRadar/600571E7-E623-4534-AFDE-14B50E42F190.png)
+
+![](PlanRadar/F3292024-6558-47DF-8B7E-074FFB32F3D4.png)
+
+![](PlanRadar/8C7E55AE-E46B-479F-95E5-616F0C0F0B78.png)
+
+![](PlanRadar/B9A8DA34-B46D-4152-819E-759289923610.png)
+
+![](PlanRadar/C01C0413-53C5-44C1-A743-3CC31A4FDC8D.png)
+
+![](PlanRadar/E783CC7E-4CBF-4998-ABB7-FF5C1745978A.png)
+
+Projekt-listan
+![](PlanRadar/40E9DB6F-8079-4B96-8099-70F76613CC77.png)
+
+Välkomstbild när man har öppnat ett projekt
+![](PlanRadar/C8AF1F29-92A3-4E20-B011-988F7DC66950.png)
+
+
+Flaggorna kan filtreras
+![](PlanRadar/F79DD393-E159-469B-AE9F-61A87F3D2CDB.png)
+
+
+Filtrerade flaggor
+![](PlanRadar/AE3DD0FE-044E-4C3E-AA03-6BF92B97A819.png)
+
+Inmatningsformulär (man väljer först vilket formulär man vill använda)
+![](PlanRadar/66F30BFA-6552-40FB-8026-02AC95217492.png)
+
+
+Koppla dokument
+![](PlanRadar/EDF6FB5F-2EA4-492B-AF85-3A3CE8584692.png)
+
+Chat
+![](PlanRadar/02D553B8-FEB5-4567-96EA-8DDCD0C20255.png)
+
+Välja formulär för en ny kontrollpunkt
+![](PlanRadar/E70FDF95-E546-4037-A21E-F340C490E317.png)
+
+Dela kontrollpunkt
+![](PlanRadar/1AB94CB7-C50E-4D14-9506-EF406708D782.png)
+
+Egna kategorilistor
+![](PlanRadar/FADC79CF-E17A-4058-B0F6-47C7A08F7BD6.png)
+
+Man kan rita på foton
+![](PlanRadar/6685B826-E5A0-4D8A-B874-E13146FE7502.png)
+
+Om man vill rita på ritningen gör man först en snapshot så att ritningen blir en bild. Bilden bifogas till kontrollpunkten som ett foto
+![](PlanRadar/4A148503-4595-4368-8201-19033178A43A.png)
+
+Skapa rapport baserat på valda flaggor
+![](PlanRadar/2CC390B7-E717-4B23-BDEC-AEA7CDCD088F.png)
+
+Välj filer som ska bifogas till rapporten
+![](PlanRadar/A90646E5-95B1-4152-8978-D5FFD9FDA8B0.png)
+
+
+Rapport-exempel
+![](PlanRadar/79CF7773-9F14-4016-ACA1-D97E1B3296CF.png)
+
+![](PlanRadar/4EA5703A-9961-4EDF-8E78-51520EBBD594.png)
+
+![](PlanRadar/08AEA580-3D55-4D29-A85D-B1BCC98CB14E.png)
+
+![](PlanRadar/F37577F5-1A05-4A38-8153-EF818DF76626.png)
+![](PlanRadar/418DF0DF-AFA9-4C6F-AA7B-F7EDFE94BA76.png)
+
+Signera rapport med penna-funktionen
+![](PlanRadar/715BCE7E-65B2-4E68-BE93-33DE7D9ABA47.png)
+
+Larvig BIM-viewer
+![](PlanRadar/139ADD29-6E32-45B8-8176-D365DB1B05B1.png)
+
+
+Aecom-chefen
+![](PlanRadar/6517F059-AB3C-485D-8E7D-DB66F810C57F.png)
+
+
+![](PlanRadar/1EFA7B8E-1936-4F3F-982B-58ED6C123D78.png)
+
+![](PlanRadar/41AA6200-5510-40FC-8A9A-CE962476C5D1.png)
+
+![](PlanRadar/612C13DA-492B-4512-8892-7211C375733E.png)
+![](PlanRadar/47DECA26-DC85-4348-9254-58AFD459787D.png)
+![](PlanRadar/1F00B793-3E33-4721-A77A-692C3AB17CD0.png)
+
+![](PlanRadar/7BDFE7BF-8A3E-4FA8-A62F-5F61BD4B899B.png)
+![](PlanRadar/D5D71DF7-82C1-44D6-BA5C-3791FFBD6FE8.png)
+
+
+![](PlanRadar/2F61B165-9AE8-43BD-B8D3-A834562FC6AA.png)
+
+![](PlanRadar/758DC9A2-E5C6-4137-8FAA-8F73520798F2.png)
+
+![](PlanRadar/4114BE4A-6C9B-4F09-9F47-DD3C18368623.png)
+
+![](PlanRadar/41E341D1-8BAF-434D-BA4B-2DAA9A360974.png)
+
+![](PlanRadar/32B98CB8-A1FB-49FE-8018-2B694D10AF3C.png)
+
+![](PlanRadar/0A0732DC-E99B-41D8-B83E-1D1502886A37.png)
+
+![](PlanRadar/ABD3DA6F-F77D-4180-9AB2-3C2C610BD007.png)

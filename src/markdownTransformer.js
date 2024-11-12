@@ -1,24 +1,6 @@
 const path = require('path');
 
 /**
- * Normalizes a filename for safe storage and lookup
- * @param {string} filename The filename to normalize
- * @returns {string} Normalized filename
- */
-function normalizeFilename(filename) {
-  // Decode URI components first
-  const decodedFilename = safeDecodeURIComponent(filename);
-
-  // Remove or replace problematic characters
-  return decodedFilename
-    .normalize('NFD') // Normalize unicode characters
-    .replace(/[\u0300-\u036f]/g, '') // Remove accent marks
-    .replace(/[^a-zA-Z0-9.-]/g, '_') // Replace special chars with underscore
-    .replace(/_+/g, '_') // Collapse multiple underscores
-    .toLowerCase(); // Convert to lowercase for case-insensitive comparison
-}
-
-/**
  * Safely decodes a URI component, handling special cases
  * @param {string} str The string to decode
  * @returns {string} Decoded string
@@ -54,19 +36,16 @@ function safeDecodeURIComponent(str) {
 }
 
 /**
- * Creates a normalized key for filename mapping
+ * Creates a key for filename mapping, preserving case
  * @param {string} originalPath Original file path
- * @returns {string} Normalized key for mapping
+ * @returns {string} Key for mapping
  */
 function createMappingKey(originalPath) {
   const decodedPath = safeDecodeURIComponent(originalPath);
   const fullPath = path.normalize(decodedPath);
 
-  // Normalize all parts of the path
-  const pathParts = fullPath
-    .split(path.sep)
-    .map(normalizeFilename) // This will convert to lowercase
-    .filter((part) => part !== '');
+  // Split path and filter out empty parts, but preserve case
+  const pathParts = fullPath.split(path.sep).filter((part) => part !== '');
 
   return pathParts.join('/');
 }
@@ -96,7 +75,7 @@ function hasExtension(filename, extension) {
 
 /**
  * Transforms Bear markdown to Obsidian format
- * @param {string} content The markdown content to transform
+ * @param {string} content The markdown content
  * @param {Map<string, string>} attachmentMap Map of original paths to UUID filenames (including extensions)
  * @param {Map<string, string>} renamedFiles Map of original note filenames to new filenames
  * @returns {string} Transformed markdown content
@@ -210,7 +189,25 @@ function isPartOfTable(line) {
  * @returns {string} Content with transformed image tags
  */
 function transformImageTags(content, attachmentMap) {
-  // Handle images with size parameters
+  // First, handle existing Obsidian wikilinks
+  content = content.replace(
+    /!\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,
+    (match, filename, width) => {
+      // Create a lookup key from the filename
+      const basename = path.basename(filename);
+
+      // Try to find the UUID filename by looking up the original filename
+      for (const [key, value] of attachmentMap.entries()) {
+        if (path.basename(key) === basename || value === basename) {
+          // If width was specified, preserve it
+          return width ? `![[${value}|${width}]]` : `![[${value}]]`;
+        }
+      }
+      return match; // If no mapping found, keep original
+    }
+  );
+
+  // Then handle Bear-style image tags
   content = content.replace(
     /!\[.*?\]\(([^)]+)\)(?:<!-- *({[^}]+}) *-->)?/g,
     (match, imagePath, jsonPart) => {
@@ -235,16 +232,10 @@ function transformImageTags(content, attachmentMap) {
       const decodedPath = safeDecodeURIComponent(imagePath);
       const basename = path.basename(decodedPath);
       const parentDir = path.basename(path.dirname(decodedPath));
-      const normalizedParentDir = normalizeFilename(parentDir);
-      const key = `${normalizedParentDir}/${basename}`;
+      const key = `${parentDir}/${basename}`;
 
       // Try to find the UUID filename
       let uuidFilename = attachmentMap.get(key);
-      if (!uuidFilename) {
-        // Try alternative key formats
-        const altKey = `batbatteri_varta_agm_105ah/${basename}`;
-        uuidFilename = attachmentMap.get(altKey);
-      }
 
       // Create Obsidian wikilink with UUID filename
       if (width) {
@@ -278,8 +269,7 @@ function transformPdfLinks(content, attachmentMap) {
       const decodedPath = safeDecodeURIComponent(pdfPath);
       const basename = path.basename(decodedPath);
       const parentDir = path.basename(path.dirname(decodedPath));
-      const normalizedParentDir = normalizeFilename(parentDir);
-      const key = `${normalizedParentDir}/${basename}`;
+      const key = `${parentDir}/${basename}`;
       const uuidFilename = attachmentMap.get(key);
 
       // If no UUID found, return the original link

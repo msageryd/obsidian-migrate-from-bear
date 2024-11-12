@@ -1,19 +1,19 @@
 # Different Title Than Filename
 
 An image with width:
-![[ad9cf196-c490-4186-94c3-6ca118411275.png|430]]
+![[ea2d5e53-8614-4495-901f-1ff5b278be0f.png|430]]
 
 A regular image:
-![[346096a1-a9cc-4d09-8cf8-d773a36487f4.jpg]]
+![[46c4fba7-0c1c-4d55-a9b4-238f5967a46a.jpg]]
 
 A PDF document with same name as display text (should simplify):
-![[5433f87f-70a8-4904-952a-7fe1a9076849.pdf|444]]
+![[5ed7f8e2-29e1-4f13-88db-9e6b98256968.pdf|444]]
 
 A PDF with different display name:
-![[713d100e-0893-4711-ac3b-cbd720009ed3.pdf|444]]
+![[b4281c6f-30c7-4224-a1d8-69e2410b6efe.pdf|444]]
 
 A regular PDF link without remarks:
-![[59bf06a2-ddde-4f66-b7ca-09be2cec8d82.pdf]]
+![[1de24722-bed6-4fe0-8693-a34ddb8dc799.pdf]]
 
 A PDF link with different display name without remarks:
-![[99610925-00d8-4f4f-b121-221e7b11d6ab.pdf]]
+![[274f4c23-8257-4e01-8d26-c6e797b2aa62.pdf]]
